@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tillie's Adventure</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <script src="src/bundle.js"></script>
+    <!-- Hippy Christmas by septahelix (c) copyright 2018 Licensed under a Creative Commons Noncommercial Sampling Plus license.
+    http://dig.ccmixter.org/files/septahelix/58905 Ft: luka -->
+    <!-- <div>Icons made by <a
+            href="https://www.freepik.com/?__hstc=57440181.549a86191b7440a98d016bebd28bae60.1559515455759.1559515455759.1560391234546.2&__hssc=57440181.1.1560391234546&__hsfp=2931456020"
+            title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+        licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+            3.0 BY</a></div> -->
+</head>
+<style>
+
+    body {
+        position: relative;
+        font-family: 'Pacifico', cursive;
+        width: 98vw;
+        height: 98vh;
+    }
+
+
+    .background{
+        width: 800px;
+        height: 600px;
+        background-image: url('assets/image/bg.png');
+        background-size: auto;
+        position: absolute;
+        top: 15%;
+        left: 40%;
+    }
+
+    #title{
+        position: absolute;
+        left: 40%;
+        z-index: 10;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        font-size: 20px;
+        position: absolute;
+    }
+
+    #unmute-btn{
+        z-index: 10;
+        font-size: 50px;
+        position: absolute;
+        left: 10%;
+        top: 400px;
+    }
+
+    #mute-btn {
+        z-index: 10;
+        font-size: 50px;
+        position: absolute;
+        left: 20%;
+        top: 400px;
+    }
+
+    #start-btn{
+        z-index: 10;
+        font-size: 50px;
+        position: absolute;
+        left: 10%;
+        top: 250px;
+    }
+
+    #stop-btn {
+        z-index: 10;
+        font-size: 50px;
+        position: absolute;
+        left: 20%;
+        top: 250px;
+    }
+
+
+    body h2{
+        z-index: 10;
+        font-size: 20px;
+        position: absolute;
+        left: 10%;
+        top: 550px;
+    }
+
+    img{
+        display: none;
+    }
+
+    .welcome {
+        width: 800px;
+        height: 600px;
+        position: absolute;
+        top: 15%;
+        left: 40%;
+        background-color: blue;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    
+    .welcome-text{
+        font-size: 70px;
+    }
+
+
+</style>
+<body>
+    <button id='mute-btn'><i class="fas fa-volume-mute"></i></button>
+    <button id='unmute-btn'><i class="fas fa-volume-up"></i></button> 
+    <button id='start-btn'><i class="fas fa-play-circle"></i></button>
+    <button id='stop-btn'><i class="fas fa-pause-circle"></i></button>
+    
+    <h2>Use arrow keys to move Tillie</h2>
+    <h1 id='title'>Tillie's Adventure</h1>
+    <audio src="assets/audio/bgm.mp3" id="sound"></audio>
+    
+    <div class='welcome'>
+        <p class='welcome-text'>
+            Welcome, click the start key left to start your game
+        </p> 
+    </div>
+
+    <div class='background'>
+
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <img id='potion' src="assets/image/potion.png" alt="potion">
+        <img id='tillie' src="assets/image/princess.png" alt="tillie">
+        <img id='spider' src="assets/image/spider.png" alt="spider">
+        <img id='wall' src="assets/image/wall.png" alt="wall">
+        <img id='wood' src="assets/image/wood.png" alt="wood">
+        <img id='heart' src="assets/image/heart.png" alt="heart">
+        <img id='potion' src="assets/image/potion.png" alt="potion">
+    </div> 
+
+</body>
+</html>
