@@ -38,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function startGame(){
         debugger
-        const wel = document.getElementById('welcome');
-        wel.
+        const wel = document.getElementsByClassName('welcome');
+        debugger
+        wel[0].classList.add("hidden")
         game.start();
         gameLoop();
         play();
