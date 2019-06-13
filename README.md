@@ -36,7 +36,7 @@ Monster will be on patrol, Tillie needs to watch out for them.
 
 ## Wireframes 
 
-![](/Users/lin/Desktop/Tillie's Adventure/assets/image/Screen Shot 2019-06-10 at 10.58.04 PM.png)
+![](https://raw.githubusercontent.com/jHuang30/Tillie-s-adventure/master/assets/image/Screen%20Shot%202019-06-10%20at%2010.58.04%20PM.png)
 
 
 ## Technologies
