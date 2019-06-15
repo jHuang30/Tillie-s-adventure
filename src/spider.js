@@ -1,9 +1,9 @@
-import { collision } from './collision'
+import { collision, collisionUpDown } from './collision';
 
 class Spider{
     constructor(game){
         this.image = document.getElementById('spider');
-        this.position = {x: 300, y: 100};
+        this.position = {x: 400, y: 100};
         this.srcX = 0;
         this.srcy = 0;
         this.sheetWidth = 687;
@@ -20,9 +20,13 @@ class Spider{
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.frame = 2;
-
     }
-
+    healthlost(player){
+        player.lives -=1;
+        //
+        // player.invulnerable = true;
+        // setTimeout(() => player.invulnerable = false, 1000);
+    }
     updateFrame(){
         this.position.x += this.speedX;
         this.position.y += this.speedY;
@@ -41,7 +45,8 @@ class Spider{
 
         const distance = 50;
 
-        if (collision(this.game.player, this, distance)){
+        if (collision(this.game.player, this, distance) && 
+        collisionUpDown(this.game.player, this, distance)){
             this.frame = this.speedY > 0 ? 4 : 5;
             if (this.position.x > this.game.player.position.x) {
                 this.speedX = -this.maxSpeed;
@@ -56,7 +61,11 @@ class Spider{
         } else {
             this.frame = this.speedY > 0 ? 2 : 3;
         }
-
+        let monster = this;
+        if(monster.game.player.lives >0){
+            if (collision(monster.game.player, monster, -10 ) && collisionUpDown(this.game.player, monster, distance)) {
+            setTimeout(monster.healthlost(monster.game.player),5000);
+        }}
     }
 
     draw(ctx) {

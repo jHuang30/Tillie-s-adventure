@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function gameLoop(){
-        debugger
+
 
         setTimeout(function(){
             ctx.clearRect(
@@ -37,9 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }   
     
     function startGame(){
-        debugger
         const wel = document.getElementsByClassName('welcome');
-        debugger
         wel[0].classList.add("hidden")
         game.start();
         gameLoop();

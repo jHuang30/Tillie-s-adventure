@@ -1,17 +1,5 @@
 import Wall from './wall';
 
-export const level1= [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-];
-
 export function buildLevel(game, level){
     let wa = [];
 
@@ -19,12 +7,18 @@ export function buildLevel(game, level){
         row.forEach((wal, j) => {
             if (wal === 1) {
                 let position = {
-                    x: 93 * i,
-                    y: 122 * j,
-                }
+                    x: 50+93 * j,
+                    y: 122 * i,
+                };
                 wa.push(new Wall(game, position));
             }
         });
     });
-    return wa
+    return wa;
 }
+export const level1 = [
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+];

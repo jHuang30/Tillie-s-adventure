@@ -18,6 +18,10 @@ class Tillie {
         this.maxSpeed = 6;
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
+        this.lives = 3;
+
+        //
+        // this.invulnerable = false;
     }
 
     updateFrame() {
