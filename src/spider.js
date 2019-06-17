@@ -1,9 +1,10 @@
 import { collision, collisionUpDown } from './collision';
 
 class Spider{
-    constructor(game){
-        this.image = document.getElementById('spider');
-        this.position = {x: 400, y: 100};
+    constructor(game, positionX,positionY){
+        this.image = document.getElementById('spider')
+        this.position = {x: positionX, y: positionY};
+        this.oldPosition = { x: positionX, y: positionY };
         this.srcX = 0;
         this.srcy = 0;
         this.sheetWidth = 687;
@@ -20,24 +21,24 @@ class Spider{
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.frame = 2;
+        this.counter = 0;
     }
     healthlost(player){
         player.lives -=1;
-        //
-        // player.invulnerable = true;
-        // setTimeout(() => player.invulnerable = false, 1000);
     }
     updateFrame(){
+        this.oldPosition.x = this.position.x;
+        this.oldPosition.y = this.position.y;
         this.position.x += this.speedX;
         this.position.y += this.speedY;
         
         if(this.position.x - this.gameWidth > -90 || this.position.x < -15) {
             this.speedX  = -this.speedX;
-        }
+        }//bounce back when touching edges
 
         if (this.position.y - this.gameHeight > -90 || this.position.y < -20) {
             this.speedY = -this.speedY;
-        }   
+        }   //bounce back when touching edges
 
         this.currentFrame = ++this.currentFrame % (this.column - 1);
         this.srcX = this.currentFrame * this.spriteWidth;
@@ -49,7 +50,7 @@ class Spider{
         collisionUpDown(this.game.player, this, distance)){
             this.frame = this.speedY > 0 ? 4 : 5;
             if (this.position.x > this.game.player.position.x) {
-                this.speedX = -this.maxSpeed;
+                this.speedX = -this.maxSpeed;// following the player
             } else {
                 this.speedX = this.maxSpeed;
             }
@@ -61,10 +62,9 @@ class Spider{
         } else {
             this.frame = this.speedY > 0 ? 2 : 3;
         }
-        let monster = this;
-        if(monster.game.player.lives >0){
-            if (collision(monster.game.player, monster, -10 ) && collisionUpDown(this.game.player, monster, distance)) {
-            setTimeout(monster.healthlost(monster.game.player),5000);
+        if(this.game.player.lives >0){
+            if (collision(this.game.player, this, -20 ) && collisionUpDown(this.game.player, this, -20)) {    
+                    this.game.player.lives -=1;
         }}
     }
 

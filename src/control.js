@@ -1,5 +1,4 @@
 
-
 class Control{
     constructor(player){
         document.addEventListener("keydown", event => {

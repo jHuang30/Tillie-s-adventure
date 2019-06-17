@@ -32,7 +32,7 @@
 
     .background{
         width: 800px;
-        height: 600px;
+        height: 624px;
         background-image: url('assets/image/bg.png');
         background-size: auto;
         position: absolute;
@@ -127,7 +127,25 @@
     .hidden {
         display: none;
     }
-
+#outsideBar{
+    border: black solid thin;
+    height:24px;
+    width:200px;
+    box-shadow: inset 0 -10px 10px rgba(255,255,255,1.3);
+    border-radius: 25px;
+    display:none;
+}
+#myBar {
+    text-align:right;
+    color: white;
+    font:24px Indie Flower;
+    height:24px;
+    width:100%;
+    background-color:red;
+    box-shadow: inset 0 -15px 15px rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    display: block;
+}
 
 </style>
 <body>
@@ -147,8 +165,13 @@
     </div>
 
     <div class='background'>
-
+       <div id = "outsideBar"><div id="myBar">100</div></div> 
         <canvas id="canvas" width="800" height="600"></canvas>
+        <img id='lama' src="assets/image/llama_walk.png" alt="lama">
+        <img id='chickenEat' src="assets/image/chicken_eat.png" alt="chickenEat">
+        <img id='sheep' src="assets/image/sheep_walk.png" alt="sheep">
+        <img id='pig' src="assets/image/pig_walk.png" alt="pig">
+        <img id='chicken' src="assets/image/chicken_walk.png" alt="chicken">
         <img id='potion' src="assets/image/potion.png" alt="potion">
         <img id='tillie' src="assets/image/princess.png" alt="tillie">
         <img id='spider' src="assets/image/spider.png" alt="spider">

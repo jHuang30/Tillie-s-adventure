@@ -7,8 +7,8 @@ export function collision (obj1, obj2, distance){
     let leftOfobj2 = obj2.position.x;
 
     if (
-        leftOfobj2 <= rightOfobj1 + distance &&
-        rightOfobj2 >= leftOfobj1 - distance
+        leftOfobj2 < rightOfobj1 + distance &&
+        rightOfobj2 > leftOfobj1 - distance
     ) {
         return true;
     } else {
@@ -24,8 +24,8 @@ export function collisionUpDown(obj1, obj2, distance){
     let bottomOfobj2 = obj2.position.y + obj2.spriteHeight;
     let topOfobj2 = obj2.position.y;
 
-    if (bottomOfobj1 >= topOfobj2 - distance &&
-            topOfobj1 <= bottomOfobj2 + distance )
+    if (bottomOfobj1 > topOfobj2 - distance &&
+            topOfobj1 < bottomOfobj2 + distance )
         {
             return true;
         } else {
