@@ -19,7 +19,7 @@ Monster will be on patrol, Tillie needs to watch out for them.
 
 ## Functionality and MVP 
 
-* create canvas with background and characters sprit sheets.
+* create canvas with background and characters sprite sheets.
 
 * Tillie moves on four directions by arrow keys, monsters move automatically within the canvas. 
 
@@ -64,7 +64,7 @@ Day 3: background set up with collion detection (walls, pounds, potion, friends 
 
 Day 4: level up maps
 
-Day 5: sounds efect 
+Day 5: sounds effect 
 
 
 
