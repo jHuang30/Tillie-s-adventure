@@ -7,14 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
     var ctx = canvas.getContext("2d");
     var sound = document.getElementById("sound");
     var fps = 60;
+
+    const startPause = document.getElementById("stop-btn");
     
-    document.getElementById("start-btn").addEventListener('click', startGame);
-    document.getElementById("stop-btn").addEventListener('click', stopPlay);
+    document.getElementById('start-btn').addEventListener('click', removeClassHidden)
+    document.getElementById('startGame').addEventListener('click', startGame);
+    startPause.addEventListener('click', stopPlay);
     document.getElementById("unmute-btn").addEventListener('click', play);
     document.getElementById("mute-btn").addEventListener('click', mute);
     
     var game = new Game(canvas.width, canvas.height);
-    var stop = true;
+    var stop = true;        
 
     function play(){
         sound.play();
@@ -52,16 +55,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, fps);
     }   
-    function stopPlay() {
+
+    function stopPlay() {   
+        debugger
+        toggleClass();
+        debugger
         if(stop){
             stop = false;
             requestAnimationFrame(gameLoop);
+            
         } else{
             stop = true;
         }
         
-        
+        // startPause.classList.add('hidden');
     }
+
+    function toggleClass(){
+        debugger
+        if (!(startPause.classList.contains('hidden'))){
+            startPause.classList.add('hidden')
+        }
+    }
+
+    function removeClassHidden(){
+        startPause.classList.remove('hidden');
+        stopPlay();
+    }
+
     function startGame(){
         const wel = document.getElementsByClassName('welcome');
         wel[0].classList.add("hidden")
