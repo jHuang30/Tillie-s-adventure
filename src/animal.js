@@ -23,7 +23,7 @@ export default class Animals{
         this.added = false;
     }
     update(){
-        
+        this.faceRight();   
         this.oldPosition.x = this.position.x;
         this.oldPosition.y = this.position.y;
         if (collision(this, this.game.player, -5) && collisionUpDown(this, this.game.player, -5)) {
@@ -44,22 +44,22 @@ export default class Animals{
             }
             this.position.x += this.speedX;
             this.position.y += this.speedY;
-            this.game.player.path.forEach(pos=>{if (this.position.x > pos[0]+20) {
+            this.game.player.path.forEach(pos=>{if (this.position.x > pos[0]+10) {
                 this.speedX = -this.maxSpeed;
-            } else {
+            } else if (this.position.x < pos[0] + 10){
                 this.speedX = this.maxSpeed;
-            }
-                if (this.position.y > pos[1]+20) {
+            } else {this.speedX = 0;}
+                if (this.position.y > pos[1]+10) {
                 this.speedY = -this.maxSpeed;
-            } else {
+                } else if (this.position.y < pos[1] + 10){
                 this.speedY = this.maxSpeed;
-            }
+            } else {this.speedY = 0;}
             });
+        if (this.speedX >= 0) this.faceRight();
+        else { this.faceLeft();}
+        if (this.speedY >= 0) this.faceDown();
+        else {this.faceUp();}
         }
-        if(this.position.x - this.oldPosition.x >= 0) this.faceRight();
-        else if (this.position.x - this.oldPosition.x < 0) this.faceLeft();
-        else if(this.position.y - this.oldPosition.y >= 0) this.faceDown();
-        if(this.position.y - this.oldPosition.y < 0) this.faceUp();
     }  
     faceRight(){
             this.currentFrame = ++this.currentFrame % this.column;

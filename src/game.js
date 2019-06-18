@@ -8,6 +8,7 @@ class Game {
         this.gameWidth = width; 
         this.gameHeight = heigth;  
         this.chicken = 0; 
+        this.leveled = false;
     }
 
 
@@ -16,11 +17,7 @@ class Game {
         elem.style.display="block";
         this.player = new Tillie(this);
         let walls = buildLevel(this, level1);
-        if(this.chicken ===2){
-            walls = buildLevel(this, level2);
-            this.gameObjects = [this.player, this.spider, ...walls];
-        }
-        this.spider = new Spider(this, 100, 500);
+        this.spider = new Spider(this, 600, 500);
         this.clone =[];
         this.gameObjects = [this.player, this.spider,...walls];
         // setInterval(()=> {        
@@ -31,9 +28,17 @@ class Game {
         // }, 5000);
         new Control(this.player);
     }
-
+    display(ctx,level){
+        ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "50px Indie Flower";
+        ctx.fillText(level, 300, 250);
+    }
     draw(ctx){
-        if (this.chicken === 2) {
+        
+        if (this.chicken === 2 && this.leveled) {
             let walls = buildLevel(this, level2);
             this.gameObjects = [this.player, this.spider, ...walls];
         }

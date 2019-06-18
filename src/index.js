@@ -11,16 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("start-btn").addEventListener('click', startGame);
     document.getElementById("stop-btn").addEventListener('click', stopPlay);
     document.getElementById("unmute-btn").addEventListener('click', play);
-    document.getElementById("mute-btn").addEventListener('click', stopPlay);
+    document.getElementById("mute-btn").addEventListener('click', mute);
     
     var game = new Game(canvas.width, canvas.height);
     var stop = true;
-    
+
     function play(){
         sound.play();
         stop = false;
     }
-    
+    function mute(){
+        sound.pause();
+    }
    
     
     function gameLoop(){
@@ -30,14 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
             )
             game.draw(ctx);
             var stopId = requestAnimationFrame(gameLoop);
-            if(stop||game.player.lives ===0){
-                cancelAnimationFrame(stopId);
+                if (stop){
+                    cancelAnimationFrame(stopId);
+                }
+                
+            if(game.player.lives ===0){
                 var elem = document.getElementById("outsideBar");
                 elem.style.display = "none";
                 ctx.clearRect(0,0,canvas.width,canvas.height);
                 ctx.fillStyle = "#ffffff";
                 ctx.font = "50px Indie Flower";
                 ctx.fillText("Game Over", 300, 250);
+                stop = true;
+            }
+            if ((!game.leveled) && game.chicken === 2) {
+                //fps = 2000;
+                setTimeout(game.display(ctx, "level2"), 2000);
+                game.leveled = true;
             }
         }, fps);
     }   
@@ -48,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else{
             stop = true;
         }
-        sound.pause();
+        
         
     }
     function startGame(){
@@ -57,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(stop){
             stop=false;
             game.start();
-        requestAnimationFrame(gameLoop);
+            requestAnimationFrame(gameLoop);
         play();}
 
     }
