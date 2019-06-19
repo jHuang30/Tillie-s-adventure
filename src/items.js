@@ -12,7 +12,7 @@ export default class Item{
         if(collision(this, this.game.player,-5)&&collisionUpDown(this,this.game.player,-5)){
             console.log("touched");
             this.markedForDeletion = true;
-            this.game.player.lives +=10;
+            if(this.game.player.lives<=90) {this.game.player.lives+=10;}else{this.game.player.lives = 100;}
         }
     }
     draw(ctx) {

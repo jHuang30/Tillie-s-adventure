@@ -1,10 +1,11 @@
 import { collision, collisionUpDown } from './collision';
-
+import Wall from './wall';
 class Spider{
-    constructor(game, positionX,positionY){
+    constructor(game, positionX,positionY,scale){
         this.image = document.getElementById('spider')
         this.position = {x: positionX, y: positionY};
         this.oldPosition = { x: positionX, y: positionY };
+        this.scale = scale;
         this.srcX = 0;
         this.srcy = 0;
         this.sheetWidth = 687;
@@ -78,8 +79,8 @@ class Spider{
             this.spriteHeight,
             this.position.x,
             this.position.y,
-            this.spriteWidth,
-            this.spriteHeight
+            this.spriteWidth*this.scale,
+            this.spriteHeight*this.scale
         );
     }
 }

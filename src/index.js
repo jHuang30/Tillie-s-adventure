@@ -1,6 +1,6 @@
 
 import Game from './game';
-
+import { buildLevel} from './level';
 
 document.addEventListener('DOMContentLoaded', () => {
     var canvas = document.getElementById("canvas");
@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     var fps = 60;
 
     const startPause = document.getElementById("stop-btn");
+    const replayButton = document.getElementById("start-btn");
     
-    document.getElementById('start-btn').addEventListener('click', removeClassHidden)
+   // document.getElementById('start-btn').addEventListener('click', removeClassHidden)
     document.getElementById('startGame').addEventListener('click', startGame);
     startPause.addEventListener('click', stopPlay);
+    replayButton.addEventListener('click', stopPlay);
     document.getElementById("unmute-btn").addEventListener('click', play);
     document.getElementById("mute-btn").addEventListener('click', mute);
     
@@ -48,18 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillText("Game Over", 300, 250);
                 stop = true;
             }
-            if ((!game.leveled) && game.chicken === 2) {
-                //fps = 2000;
-                setTimeout(game.display(ctx, "level2"), 2000);
-                game.leveled = true;
+            if (game.chicken === buildLevel(game,game.leveled)[1]) {
+                fps = 2000;
+                game.display(ctx, "Level "+ String(game.counter+1));
+                setTimeout(() => {
+                    fps=60;}, 2000);
+                // stopPlay();
+                // display();
             }
         }, fps);
     }   
 
     function stopPlay() {   
-        debugger
         toggleClass();
-        debugger
         if(stop){
             stop = false;
             requestAnimationFrame(gameLoop);
@@ -68,29 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             stop = true;
         }
         
-        // startPause.classList.add('hidden');
     }
 
     function toggleClass(){
-        debugger
-        if (!(startPause.classList.contains('hidden'))){
-            startPause.classList.add('hidden')
-        }
-    }
+        startPause.classList.toggle('hidden');
+       }
 
-    function removeClassHidden(){
-        startPause.classList.remove('hidden');
-        stopPlay();
-    }
 
     function startGame(){
         const wel = document.getElementsByClassName('welcome');
-        wel[0].classList.add("hidden")
-        if(stop){
+        wel[0].classList.add("hidden");
             stop=false;
             game.start();
             requestAnimationFrame(gameLoop);
-        play();}
+        play();
 
     }
 })

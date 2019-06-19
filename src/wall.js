@@ -1,6 +1,6 @@
-
+import Spider from './spider';
 import { collision, collisionUpDown } from './collision';
-
+import { buildLevel } from './level';
 class Wall {
     constructor(game, position){
         this.image = document.getElementById('wall');
@@ -8,6 +8,7 @@ class Wall {
         this.position = position;
         this.spriteWidth = 45;
         this.spriteHeight = 60;
+        
     }
 
     notRepeat (arr, po){
@@ -19,20 +20,20 @@ class Wall {
         return true;
     }
     update (){
-        // this.game.clone.forEach(spider=>{
-        //     if (collision(spider, this, -25)) {//if left right touch first
-        //         if (collisionUpDown(spider, this, -10)) {//make sure it collide the item, not just left and right of the whole screen.
-        //             spider.position.x = spider.oldPosition.x;//spider send back to old position before collision
-        //             spider.speedX = - spider.speedX;//spider bounce back x direction
-        //         }
-        //     } if (collisionUpDown(spider, this, -10)) {//if up and down touch first 
-        //         if (collision(spider, this, -25)) {//same idea from line 25
-        //             spider.position.y = spider.oldPosition.y;//same idea from line 26
-        //             spider.speedY = - spider.speedY;// same idea from line 27
-        //         }
-        //     }
+        this.game.clone.forEach(spider=>{
+            if (collision(spider, this, -25)) {//if left right touch first
+                if (collisionUpDown(spider, this, -10)) {//make sure it collide the item, not just left and right of the whole screen.
+                    spider.position.x = spider.oldPosition.x;//spider send back to old position before collision
+                    spider.speedX = - spider.speedX;//spider bounce back x direction
+                }
+            } if (collisionUpDown(spider, this, -10)) {//if up and down touch first 
+                if (collision(spider, this, -25)) {//same idea from line 25
+                    spider.position.y = spider.oldPosition.y;//same idea from line 26
+                    spider.speedY = - spider.speedY;// same idea from line 27
+                }
+            }
 
-        // });
+        });
         if (collision(this.game.spider, this, -25)) {//if left right touch first
             if (collisionUpDown(this.game.spider, this, -10)) {//make sure it collide the item, not just left and right of the whole screen.
                 this.game.spider.position.x = this.game.spider.oldPosition.x;//spider send back to old position before collision
