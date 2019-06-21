@@ -32,7 +32,21 @@ class Spider{
         this.oldPosition.y = this.position.y;
         this.position.x += this.speedX;
         this.position.y += this.speedY;
-        
+        var instancesOfWall = this.game.gameObjects.filter(obj=> obj instanceof Wall);// filtered all wall objects have been created in game class. 
+         instancesOfWall.forEach(wall => {//go through this wall lists and make sure this(spider) don't touch wall.
+            if (collision(wall, this, -25)) {//if left right touch first
+                if (collisionUpDown(wall, this, -10)) {//make sure it collide the item, not just left and right of the whole screen.
+                    this.position.x = this.oldPosition.x;//spider send back to old position before collision
+                    this.speedX = - this.speedX;//spider bounce back x direction
+                }
+            } if (collisionUpDown(wall, this, -10)) {//if up and down touch first 
+                if (collision(wall, this, -25)) {//same idea from line 25
+                    this.position.y = this.oldPosition.y;//same idea from line 26
+                    this.speedY = - this.speedY;// same idea from line 27
+                }
+            }
+
+        });
         if(this.position.x - this.gameWidth > -90 || this.position.x < -15) {
             this.speedX  = -this.speedX;
         }//bounce back when touching edges
@@ -45,7 +59,7 @@ class Spider{
         this.srcX = this.currentFrame * this.spriteWidth;
         this.srcY = this.frame * this.spriteHeight;
 
-        const distance = 50;
+        const distance = 50*this.scale;
 
         if (collision(this.game.player, this, distance) && 
         collisionUpDown(this.game.player, this, distance)){
@@ -64,7 +78,7 @@ class Spider{
             this.frame = this.speedY > 0 ? 2 : 3;
         }
         if(this.game.player.lives >0){
-            if (collision(this.game.player, this, -20 ) && collisionUpDown(this.game.player, this, -20)) {    
+            if (collision(this.game.player, this, -20 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
                     this.game.player.lives -=1;
         }}
     }
