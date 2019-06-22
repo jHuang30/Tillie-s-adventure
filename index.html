@@ -154,10 +154,10 @@
     cursor: pointer;
 }
 #buttons {
-    width: 500px;
+    width: 550px;
     height: 600px;
     position: absolute;
-    top: 15%;
+    top: 25%;
     right: 60%;
     z-index: 15;
     justify-content: center;
@@ -174,12 +174,31 @@
     left: 65%;
     z-index: 25;
 }
+#down {
+    list-style-image: url('assets/image/down.gif');
+}
+#right {
+    list-style-image: url('assets/image/right.gif');
+}
+#up {
+    list-style-image: url('assets/image/up.gif');
+}
+#left {
+    list-style-image: url('assets/image/left.gif');
+}
+li{
+    font-family: 'Barlow', cursive;
+    padding:15px;
+    font-size:25px;
+}
 </style>
 <body>
-    <div id ="buttons"><li>Pass all three levels you will win the game.</li>
-    <li>Lose all 100 HP, the game will be over.</li>
-    <li>Use arrow key to move Tillie </li>
-    <li>DANGER! Spiders will follow Tillie if too close to!!!</li>
+    <div id ="buttons">
+    <li id='down'>Pass all three levels you will win the game.</li>
+    <li id='right'>Lose all 100 HP, the game will be over.</li>
+    <li id= 'up'>Use arrow key to move Tillie </li>
+    <li id = 'left'>DANGER! 
+        Spiders will follow Tillie if too close to!!!</li>
     </div>
         <button id='mute-btn'><i class="fas fa-volume-mute"></i></button>
         <button id='unmute-btn'><i class="fas fa-volume-up"></i></button> 

@@ -26,7 +26,7 @@ export default class Animals{
         this.faceRight();   
         this.oldPosition.x = this.position.x;
         this.oldPosition.y = this.position.y;
-        if (collision(this, this.game.player, -5) && collisionUpDown(this, this.game.player, -5)) {
+        if (collision(this, this.game.player, -15) && collisionUpDown(this, this.game.player, -15)) {
             this.follow = true;
             if(!this.added) {
                 this.game.chicken +=1;

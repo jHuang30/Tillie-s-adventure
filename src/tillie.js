@@ -46,8 +46,8 @@ class Tillie {
     healthmove() {
     var elem = document.getElementById("myBar");
     var width = this.lives;
-    elem.style.width = width + '%';
-    elem.innerHTML = width;
+    elem.style.width = width + '%';//HP decreasing, by changing persentage.
+    elem.innerHTML = Math.round(width);
     }
     facingRight() {
         this.currentFrame = ++this.currentFrame % this.column;

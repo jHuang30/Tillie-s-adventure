@@ -35,14 +35,15 @@ class Spider{
         var instancesOfWall = this.game.gameObjects.filter(obj=> obj instanceof Wall);// filtered all wall objects have been created in game class. 
          instancesOfWall.forEach(wall => {//go through this wall lists and make sure this(spider) don't touch wall.
             if (collision(wall, this, -25)) {//if left right touch first
-                if (collisionUpDown(wall, this, -10)) {//make sure it collide the item, not just left and right of the whole screen.
+                if (collisionUpDown(wall, this, -30)) {//make sure it collide the item, not just left and right of the whole screen.
                     this.position.x = this.oldPosition.x;//spider send back to old position before collision
                     this.speedX = - this.speedX;//spider bounce back x direction
                 }
-            } if (collisionUpDown(wall, this, -10)) {//if up and down touch first 
-                if (collision(wall, this, -25)) {//same idea from line 25
-                    this.position.y = this.oldPosition.y;//same idea from line 26
-                    this.speedY = - this.speedY;// same idea from line 27
+            } 
+            if (collisionUpDown(wall, this, -35)) {
+                if (collision(wall, this, -25)) {
+                    this.position.y = this.oldPosition.y;
+                    this.speedY = - this.speedY;
                 }
             }
 
@@ -78,8 +79,11 @@ class Spider{
             this.frame = this.speedY > 0 ? 2 : 3;
         }
         if(this.game.player.lives >0){
-            if (collision(this.game.player, this, -20 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
-                    this.game.player.lives -=1;
+            if (collision(this.game.player, this, -distance/2 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
+                    if(this.scale>=1.2){this.game.player.lives -=1.5;}//damage from spider, the bigger the more damage.
+                    else if (this.scale < 1.2&& this.scale>=0.8){this.game.player.lives -=0.8;}
+                    else if(this.scale <0.8 && this.scale >=0.5){this.game.player.lives -=0.5;}
+                    else{this.game.player.lives -= 0.1;}
         }}
     }
 

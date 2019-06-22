@@ -27,9 +27,9 @@ class Game {
         this.repeat = false;
         this.leveled = this.levelList[this.counter-1]
         var walls = buildLevel(this, this.leveled)[0];
-        this.spider = new Spider(this, 600, 500,0.5);
+        //this.spider = new Spider(this, 600, 500,0.5);
         this.clone =[];
-        this.gameObjects = [this.player, this.spider,...walls];
+        this.gameObjects = [this.player,...walls];
         new Control(this.player);
 
     }
@@ -46,7 +46,7 @@ class Game {
         if (this.chicken === buildLevel(this, this.leveled)[1]) {
             this.leveled = this.levelList[this.counter];
             var walls = buildLevel(this, this.leveled)[0];
-            this.gameObjects = [this.player, this.spider, ...walls];
+            this.gameObjects = [this.player, ...walls];
             this.chicken = 0;
             this.counter +=1;
             if(this.leveled === this.levelList[2]){
@@ -56,7 +56,7 @@ class Game {
                 else{let xpo = Math.random() * 700;
                 let ypo = Math.random() * 500;
                 this.clone.push(new Spider(this, xpo, ypo, Math.random()*1.5));
-                this.gameObjects = [this.player, this.spider, ...walls, ...this.clone];}
+                this.gameObjects = [this.player, ...walls, ...this.clone];}
             }, 5000);
                 
         }

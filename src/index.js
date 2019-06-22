@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var sound = document.getElementById("sound");
-    var fps = 20;
+    var fps = 40;
 
     const startPause = document.getElementById("stop-btn");
     const replayButton = document.getElementById("start-btn");
@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     cancelAnimationFrame(stopId);
                 }
             
-            if(game.player.lives ===0){
+            if(game.player.lives <=0){
                 var elem = document.getElementById("outsideBar");
                 elem.style.display = "none";
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = "#ffffff";
                 ctx.font = "50px Indie Flower";
                 ctx.fillText("Game Over", 300, 250);
-                var seconds = 5;
+                var seconds = 3;
                 var countDown = setInterval(() => { // restart count down
                     elem.style.display = "none";
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,30 +75,40 @@ document.addEventListener('DOMContentLoaded', () => {
                             replay.classList.toggle('show');
                         }
                     }
-                },1000);
+                },1100);
                 stop = true;
             }
             if (game.chicken === buildLevel(game,game.leveled)[1]) {
                 if (game.leveled === game.levelList[2]){
-                    fps=2000;
                     mute();
                     var elem = document.getElementById("outsideBar");
                     elem.style.display = "none";
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.fillStyle = "#ffffff";
                     ctx.font = "50px Indie Flower";
-                    ctx.fillText("you Win!", 300, 250);
-                    ctx.fillText("play again?", 300, 300);
+                    var seconds = 3;
+                    var countDown = setInterval(() => { // restart count down
+                        elem.style.display = "none";
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillText("you Win!", 300, 250);
+                        ctx.fillText(seconds, 300, 300);
+                        seconds -= 1;
+                        if (seconds < 0) {
+                            clearInterval(countDown);
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.fillText("Start Again!", 300, 300);
+                            if (replay.classList.contains('hidden')) {
+                                replay.classList.remove('hidden');
+                                replay.classList.toggle('show');
+                            }
+                        }
+                    }, 1100);
                     stop = true;
-                    if (replay.classList.contains('hidden')) {
-                        replay.classList.remove('hidden');
-                        replay.classList.toggle('show');
-                    }
                 }else{
                     fps = 2000;
                 game.display(ctx, "Level "+ String(game.counter+1));
                 setTimeout(() => {
-                    fps=20;}, 2000);} 
+                    fps=40;}, 2000);} 
                 // stopPlay();
                 // display();
             }
@@ -123,12 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function startGame(){
-        debugger
-        fps = 20;
+        fps = 40;
         const wel = document.getElementsByClassName('welcome');
         const but = document.getElementById("buttons");
-        but.classList.toggle("hidden");
-        wel[0].classList.add("hidden");
+        debugger
+        if (!but.classList.contains("hidden")){
+            but.classList.toggle("hidden");
+        } 
+        if(!wel[0].classList.contains("hidden")){
+            wel[0].classList.toggle("hidden");
+        };
         if (replay.classList.contains('show')) {
             replay.classList.remove('show'); 
             replay.classList.toggle('hidden');

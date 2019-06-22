@@ -8,7 +8,7 @@ export function collision (obj1, obj2, distance){
 
     if (
         leftOfobj2 < rightOfobj1 + distance &&
-        rightOfobj2 > leftOfobj1 - distance
+        rightOfobj2 > leftOfobj1 - distance+10
     ) {
         return true;
     } else {
