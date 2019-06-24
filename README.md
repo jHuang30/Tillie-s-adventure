@@ -38,9 +38,8 @@ Users will play the role of Tillie and use arrow keys to move the Tillie to dodg
 
 Monsters will following Tillie if she is too close! By using collision detection withing certain distance.
 
-'''javascript
-{
-    export function collision (obj1, obj2, distance){
+'''
+export function collision (obj1, obj2, distance){
 
     let rightOfobj1 = obj1.position.x + obj1.spriteWidth;
     let leftOfobj1 = obj1.position.x;
@@ -74,14 +73,12 @@ export function collisionUpDown(obj1, obj2, distance){
             return false;
         }
 }
-}
 '''
 
 At level 3, monsters will auto spawning in random position every 5 seconds.
 
-'''javascript
-{
-    if(this.leveled === this.levelList(2)){
+'''
+if(this.leveled === this.levelList(2)){
                 this.repeat === true;
                 var re = setInterval(() => {
                 if (this.player.lives === 0 || stop) { clearInterval(re); }
@@ -90,7 +87,6 @@ At level 3, monsters will auto spawning in random position every 5 seconds.
                 this.clone.push(new Spider(this, xpo, ypo, Math.random()*1.5));
                 this.gameObjects = [this.player, ...walls, ...this.clone];}
             }, 5000);
-    }
 '''
 
 There will be potions on the map for Tillie to pick up, they can recover 10 HP.
