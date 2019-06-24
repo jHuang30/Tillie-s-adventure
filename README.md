@@ -78,7 +78,7 @@ export function collisionUpDown(obj1, obj2, distance){
 At level 3, monsters will auto spawning in random position every 5 seconds.
 
 '''javascript
-if(this.leveled === this.levelList[2]){
+if(this.leveled === this.levelList(2)){
                 this.repeat === true;
                 var re = setInterval(() => {
                 if (this.player.lives === 0 || stop) { clearInterval(re); }
