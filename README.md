@@ -96,7 +96,7 @@ There will be potions on the map for Tillie to pick up, they can recover 10 HP.
 ![Flare screenshot](assets/image/potion.gif)
 
 Different scale of monster will make differe amount of damage to Tillie.
-'''
+
 if(this.game.player.lives >0){
 
             if (collision(this.game.player, this, -distance/2 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
@@ -105,7 +105,7 @@ if(this.game.player.lives >0){
                     else if(this.scale <0.8 && this.scale >=0.5){this.game.player.lives -=0.5;}
                     else{this.game.player.lives -= 0.1;}
         }}
-'''
+
 ##
 
 
