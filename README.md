@@ -38,8 +38,7 @@ Users will play the role of Tillie and use arrow keys to move the Tillie to dodg
 
 Monsters will following Tillie if she is too close! By using collision detection withing certain distance.
 
-'''
-export function collision (obj1, obj2, distance){
+    export function collision (obj1, obj2, distance){
 
     let rightOfobj1 = obj1.position.x + obj1.spriteWidth;
     let leftOfobj1 = obj1.position.x;
@@ -53,8 +52,8 @@ export function collision (obj1, obj2, distance){
     } else {
         return false;
     }
-}
-export function collisionUpDown(obj1, obj2, distance){
+    }
+    export function collisionUpDown(obj1, obj2, distance){
 
     let bottomOfobj1 = obj1.position.y + obj1.spriteHeight;
     let topOfobj1 = obj1.position.y;
@@ -68,18 +67,16 @@ export function collisionUpDown(obj1, obj2, distance){
         } else {
             return false;
         }
-}
+    }
 
 
-'''
 
 At level 3, monsters will auto spawning in random position every 5 seconds.
 
-'''
-
-if(this.leveled === this.levelList(2)){
+    if(this.leveled === this.levelList(2)){
 
                 this.repeat === true;
+
                 var re = setInterval(() => {
                 if (this.player.lives === 0 || stop) { clearInterval(re); }
                 else{let xpo = Math.random() * 700;
@@ -89,15 +86,13 @@ if(this.leveled === this.levelList(2)){
             }, 5000);
 
 
-'''
-
 There will be potions on the map for Tillie to pick up, they can recover 10 HP.
 
 ![Flare screenshot](assets/image/potion.gif)
 
 Different scale of monster will make differe amount of damage to Tillie.
-'''
-if(this.game.player.lives >0){
+
+    if(this.game.player.lives >0){
 
             if (collision(this.game.player, this, -distance/2 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
                     if(this.scale>=1.2){this.game.player.lives -=1.5;}//damage from spider, the bigger the more damage.
@@ -105,7 +100,7 @@ if(this.game.player.lives >0){
                     else if(this.scale <0.8 && this.scale >=0.5){this.game.player.lives -=0.5;}
                     else{this.game.player.lives -= 0.1;}
         }}
-'''
+
 ##
 
 
