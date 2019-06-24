@@ -1,42 +1,19 @@
-# Tillie-s-adventure
+#![Flare screenshot](assets/image/right.gif) Tillie-s-adventure![Flare screenshot](assets/image/left.gif)
 
 
 ## Background and Overview
 
-Tillie's Advendure is a adventure game with a background of a little girl - Tillie rescue her friends. 
-Monster will be on patrol, Tillie needs to watch out for them. 
+Tillie's Advendure is a adventure game with a background of a little girl - Tillie rescue her animal friends. 
+Monsters/Spiders will be on patrol, Tillie needs to watch out for them. 
 
-* Users will play the role of Tillie and use arrow keys to move the Tillie to dodge the monsters and rescue the friends.
 
 * Monsters will chase after Tillie if the radius between two objects falls into 50pxs. 
 
-* Hit by monster will lose one drop of HP out of total 3. 
+* Hit by monster will continuously losing Hit Point. The damage will be different depending on the scale of monsters.
 
-* Finding random positioned potion will add one drop of HP. 
+* Pickup potions will heal the HP by 10. 
 
-* Level up when sucessfully rescued the friends. 
-
-
-## Functionality and MVP 
-
-* create canvas with background and characters sprite sheets.
-
-* Tillie moves on four directions by arrow keys, monsters move automatically within the canvas. 
-
-* background set up with collision detected.
-
-* hit by monster and healed by potion.
-
-* level up when collision detected between friends and Tillie.
-
-* different map with different levels. 
-
-* sounds effect (mutable).
-
-
-## Wireframes 
-
-![](https://raw.githubusercontent.com/jHuang30/Tillie-s-adventure/master/assets/image/Screen%20Shot%202019-06-10%20at%2010.58.04%20PM.png)
+* So far there are only 3 Levels to play, successfully resecured designated animals will pass to next level. 
 
 
 ## Technologies
@@ -49,22 +26,74 @@ Monster will be on patrol, Tillie needs to watch out for them.
 
 * CSS
 
-* Web Audio API
-
 * webpack
 
 
-## Implementation Timeline 
+## Features
 
-Day 1: create cavas with backgroud picture, get the sprit sheet for characters and objects.
+Users will play the role of Tillie and use arrow keys to move the Tillie to dodge the monsters and rescue the friends.
 
-Day 2: make Tillie and monster moving, using arrow keys for Tillie, monster moving automatically and bound to the opposite direction when hitting the boundries - collision detected. 
+![Flare screenshot](assets/image/walking1.gif)
 
-Day 3: background set up with collion detection (walls, pounds, potion, friends ect).
 
-Day 4: level up maps
+Monsters will following Tillie if she is too close! By using collision detection withing certain distance.
 
-Day 5: sounds effect 
+'''javascript
+export function collision (obj1, obj2, distance){
+
+    let rightOfobj1 = obj1.position.x + obj1.spriteWidth;
+    let leftOfobj1 = obj1.position.x;
+
+    let rightOfobj2 = obj2.position.x + obj2.spriteWidth;
+    let leftOfobj2 = obj2.position.x;
+
+    if (
+        leftOfobj2 < rightOfobj1 + distance &&
+        rightOfobj2 > leftOfobj1 - distance
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export function collisionUpDown(obj1, obj2, distance){
+    let bottomOfobj1 = obj1.position.y + obj1.spriteHeight;
+    let topOfobj1 = obj1.position.y;
+
+
+    let bottomOfobj2 = obj2.position.y + obj2.spriteHeight;
+    let topOfobj2 = obj2.position.y;
+
+    if (bottomOfobj1 > topOfobj2 - distance &&
+            topOfobj1 < bottomOfobj2 + distance )
+        {
+            return true;
+        } else {
+            return false;
+        }
+}
+'''
+
+At level 3, monsters will auto spawning in random position every 5 seconds.
+
+'''javascript
+if(this.leveled === this.levelList[2]){
+                this.repeat === true;
+                var re = setInterval(() => {
+                if (this.player.lives === 0 || stop) { clearInterval(re); }
+                else{let xpo = Math.random() * 700;
+                let ypo = Math.random() * 500;
+                this.clone.push(new Spider(this, xpo, ypo, Math.random()*1.5));
+                this.gameObjects = [this.player, ...walls, ...this.clone];}
+            }, 5000);
+'''
+
+There will be potions on the map for Tillie to pick up, they can recover 10 HP.
+
+![Flare screenshot](assets/image/potion.gif)
+##
+
 
 
 

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var sound = document.getElementById("sound");
-    var fps = 40;
+    var fps = 60;
 
     const startPause = document.getElementById("stop-btn");
     const replayButton = document.getElementById("start-btn");
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fps = 2000;
                 game.display(ctx, "Level "+ String(game.counter+1));
                 setTimeout(() => {
-                    fps=40;}, 2000);} 
+                    fps=60;}, 2000);} 
                 // stopPlay();
                 // display();
             }
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function startGame(){
-        fps = 40;
+        fps = 60;
         const wel = document.getElementsByClassName('welcome');
         const but = document.getElementById("buttons");
         debugger
