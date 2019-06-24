@@ -95,7 +95,7 @@ There will be potions on the map for Tillie to pick up, they can recover 10 HP.
 
 ![Flare screenshot](assets/image/potion.gif)
 
-Different scale of monster will make differe amount of damage to Tillie
+Different scale of monster will make differe amount of damage to Tillie.
 '''
 if(this.game.player.lives >0){
 
