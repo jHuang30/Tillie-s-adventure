@@ -40,10 +40,8 @@ Monsters will following Tillie if she is too close! By using collision detection
 
 '''
 export function collision (obj1, obj2, distance){
-
     let rightOfobj1 = obj1.position.x + obj1.spriteWidth;
     let leftOfobj1 = obj1.position.x;
-
     let rightOfobj2 = obj2.position.x + obj2.spriteWidth;
     let leftOfobj2 = obj2.position.x;
 
@@ -60,8 +58,6 @@ export function collision (obj1, obj2, distance){
 export function collisionUpDown(obj1, obj2, distance){
     let bottomOfobj1 = obj1.position.y + obj1.spriteHeight;
     let topOfobj1 = obj1.position.y;
-
-
     let bottomOfobj2 = obj2.position.y + obj2.spriteHeight;
     let topOfobj2 = obj2.position.y;
 
@@ -79,6 +75,7 @@ At level 3, monsters will auto spawning in random position every 5 seconds.
 
 '''
 if(this.leveled === this.levelList(2)){
+    
                 this.repeat === true;
                 var re = setInterval(() => {
                 if (this.player.lives === 0 || stop) { clearInterval(re); }
