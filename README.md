@@ -1,4 +1,6 @@
-![Flare screenshot](assets/image/right.gif) #Tillie-s-adventure![Flare screenshot](assets/image/left.gif)
+![Flare screenshot](assets/image/right.gif) 
+# Tillie-s-adventure
+![Flare screenshot](assets/image/left.gif)
 
 
 ## Background and Overview
