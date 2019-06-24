@@ -97,14 +97,15 @@ There will be potions on the map for Tillie to pick up, they can recover 10 HP.
 
 Different scale of monster will make differe amount of damage to Tillie.
 
-if(this.game.player.lives >0){
-
+if (this.game.player.lives >0)
+{
             if (collision(this.game.player, this, -distance/2 ) && collisionUpDown(this.game.player, this, -(distance/2))) {    
                     if(this.scale>=1.2){this.game.player.lives -=1.5;}//damage from spider, the bigger the more damage.
                     else if (this.scale < 1.2&& this.scale>=0.8){this.game.player.lives -=0.8;}
                     else if(this.scale <0.8 && this.scale >=0.5){this.game.player.lives -=0.5;}
                     else{this.game.player.lives -= 0.1;}
-        }}
+            }
+}
 
 ##
 
