@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tillie's Adventure</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap"
+      rel="stylesheet"
+    />
     <script src="src/bundle.js"></script>
     <!-- Hippy Christmas by septahelix (c) copyright 2018 Licensed under a Creative Commons Noncommercial Sampling Plus license.
     http://dig.ccmixter.org/files/septahelix/58905 Ft: luka -->
@@ -18,220 +31,229 @@
             title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
         licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
             3.0 BY</a></div> -->
-    
-</head>
-<style>
-
+  </head>
+  <style>
     body {
-        position: relative;
-        font-family: 'Pacifico', cursive;
-        width: 98vw;
-        height: 98vh;
+      position: relative;
+      font-family: "Pacifico", cursive;
+      width: 98vw;
+      height: 98vh;
     }
 
-
-    .background{
-        width: 800px;
-        height: 624px;
-        background-image: url('assets/image/bg.png');
-        background-size: auto;
-        position: absolute;
-        top: 15%;
-        left: 40%;
+    .background {
+      width: 800px;
+      height: 624px;
+      background-image: url("assets/image/bg.png");
+      background-size: auto;
+      position: absolute;
+      top: 15%;
+      left: 40%;
     }
 
-    #title{
-        position: absolute;
-        left: 40%;
-        z-index: 10;
-        font-size: 50px;
-        margin: 0;
+    #title {
+      position: absolute;
+      left: 40%;
+      z-index: 10;
+      font-size: 50px;
+      margin: 0;
     }
 
     button {
-        cursor: pointer;
-        border: none;
-        font-size: 20px;
-        position: absolute;
+      cursor: pointer;
+      border: none;
+      font-size: 20px;
+      position: absolute;
     }
 
-    #unmute-btn{
-        z-index: 10;
-        font-size: 50px;
-        position: absolute;
-        left: 10%;
-        top: 400px;
+    #unmute-btn {
+      z-index: 10;
+      font-size: 50px;
+      position: absolute;
+      left: 10%;
+      top: 400px;
     }
 
     #mute-btn {
-        z-index: 10;
-        font-size: 50px;
-        position: absolute;
-        left: 20%;
-        top: 400px;
+      z-index: 10;
+      font-size: 50px;
+      position: absolute;
+      left: 20%;
+      top: 400px;
     }
 
-    #start-btn{
-        z-index: 10;
-        font-size: 50px;
-        position: absolute;
-        left: 15%;
-        top: 250px;
+    #start-btn {
+      z-index: 10;
+      font-size: 50px;
+      position: absolute;
+      left: 15%;
+      top: 250px;
     }
 
     #stop-btn {
-        z-index: 10;
-        font-size: 50px;
-        position: absolute;
-        left: 15%;
-        top: 250px;
+      z-index: 10;
+      font-size: 50px;
+      position: absolute;
+      left: 15%;
+      top: 250px;
     }
 
-
-    body h2{
-        z-index: 10;
-        font-size: 20px;
-        position: absolute;
-        left: 10%;
-        top: 550px;
+    body h2 {
+      z-index: 10;
+      font-size: 20px;
+      position: absolute;
+      left: 10%;
+      top: 550px;
     }
 
-    img{
-        display: none;
+    img {
+      display: none;
     }
 
     .welcome {
-        width: 800px;
-        height: 600px;
-        position: absolute;
-        top: 15%;
-        left: 40%;
-        z-index: 5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Rajdhani;
-
+      width: 800px;
+      height: 600px;
+      position: absolute;
+      top: 15%;
+      left: 40%;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Rajdhani;
     }
-    
+
     /* @-webkit-keyframes example{
         from {opacity: 1;}
         to {opacity: 0;}
     } */
 
-    .welcome-text{
-        font-size: 70px;
-        padding:30px;
+    .welcome-text {
+      font-size: 70px;
+      padding: 30px;
     }
 
     .hidden {
-        display: none;
+      display: none;
     }
-    .show{
-        display:block;
+    .show {
+      display: block;
     }
-#outsideBar{
-    border: black solid thin;
-    height:24px;
-    width:200px;
-    box-shadow: inset 0 -10px 10px rgba(255,255,255,1.3);
-    border-radius: 25px;
-    display:none;
-}
-#myBar {
-    text-align:right;
-    color: white;
-    font:24px Indie Flower;
-    height:24px;
-    width:100%;
-    background-color:red;
-    box-shadow: inset 0 -15px 15px rgba(255, 255, 255, 0.5);
-    border-radius: 25px;
-    display: block;
-}
+    #outsideBar {
+      border: black solid thin;
+      height: 24px;
+      width: 200px;
+      box-shadow: inset 0 -10px 10px rgba(255, 255, 255, 1.3);
+      border-radius: 25px;
+      display: none;
+    }
+    #myBar {
+      text-align: right;
+      color: white;
+      font: 24px Indie Flower;
+      height: 24px;
+      width: 100%;
+      background-color: red;
+      box-shadow: inset 0 -15px 15px rgba(255, 255, 255, 0.5);
+      border-radius: 25px;
+      display: block;
+    }
 
-#startGame {
-    cursor: pointer;
-}
-#buttons {
-    width: 550px;
-    height: 600px;
-    position: absolute;
-    top: 25%;
-    right: 60%;
-    z-index: 15;
-    justify-content: center;
-    align-items: center;
-    font-family: Rajdhani;
-    background-color: rgb(255, 255, 255);
-            font-size: 30px;
-        padding:30px;
-}
-#replay{
-    background-color:rgb(0,0,0,0); 
-    position:absolute;
-    top:75%;
-    left: 65%;
-    z-index: 25;
-}
-#down {
-    list-style-image: url('assets/image/down.gif');
-}
-#right {
-    list-style-image: url('assets/image/right.gif');
-}
-#up {
-    list-style-image: url('assets/image/up.gif');
-}
-#left {
-    list-style-image: url('assets/image/left.gif');
-}
-li{
-    font-family: 'Barlow', cursive;
-    padding:15px;
-    font-size:25px;
-}
-</style>
-<body>
-    <div id ="buttons">
-    <li id='down'>Pass all three levels you will win the game.</li>
-    <li id='right'>Lose all 100 HP, the game will be over.</li>
-    <li id= 'up'>Use arrow key to move Tillie </li>
-    <li id = 'left'>DANGER! 
-        Spiders will follow Tillie if too close to!!!</li>
+    #startGame {
+      cursor: pointer;
+    }
+    #buttons {
+      width: 550px;
+      height: 600px;
+      position: absolute;
+      top: 25%;
+      right: 60%;
+      z-index: 15;
+      justify-content: center;
+      align-items: center;
+      font-family: Rajdhani;
+      background-color: rgb(255, 255, 255);
+      font-size: 30px;
+      padding: 30px;
+    }
+    #replay {
+      background-color: rgb(0, 0, 0, 0);
+      position: absolute;
+      top: 75%;
+      left: 65%;
+      z-index: 25;
+    }
+    #down {
+      list-style-image: url("assets/image/down.gif");
+    }
+    #right {
+      list-style-image: url("assets/image/right.gif");
+    }
+    #up {
+      list-style-image: url("assets/image/up.gif");
+    }
+    #left {
+      list-style-image: url("assets/image/left.gif");
+    }
+    li {
+      font-family: "Barlow", cursive;
+      padding: 15px;
+      font-size: 25px;
+    }
+    .instruction {
+      width: 57%;
+      position: absolute;
+      left: 30%;
+    }
+  </style>
+  <body>
+    <div id="buttons">
+      <div class="instruction">
+        <li id="down">
+          Collect all chickens to pass the level, pass all three levels to win
+          the game.
+        </li>
+        <li id="right">Lose all 100 HP, the game will be over.</li>
+        <li id="up">Use arrow key to move Tillie</li>
+        <li id="left">DANGER! Spiders will follow Tillie if too close to!!!</li>
+      </div>
     </div>
-        <button id='mute-btn'><i class="fas fa-volume-mute"></i></button>
-        <button id='unmute-btn'><i class="fas fa-volume-up"></i></button> 
-        <button id='start-btn'><i class="fas fa-play-circle"></i></button>
-        <button id='stop-btn'><i class="fas fa-pause-circle"></i></button>
+    <button id="mute-btn"><i class="fas fa-volume-mute"></i></button>
+    <button id="unmute-btn"><i class="fas fa-volume-up"></i></button>
+    <button id="start-btn"><i class="fas fa-play-circle"></i></button>
+    <button id="stop-btn"><i class="fas fa-pause-circle"></i></button>
     <button id="replay"><i class="fas fa-reply"></i></button>
-    
+
     <h2>Use arrow keys to move Tillie</h2>
-    <h1 id='title'>Tillie's Adventure</h1>
+    <h1 id="title">Tillie's Adventure</h1>
     <audio src="assets/audio/bgm.mp3" id="sound"></audio>
-    
-    <div class='welcome'>
-        <p class='welcome-text'>
-            Welcome, click here <span><i id="startGame" class="fas fa-play"></i></span> to start the game
-        </p> 
+
+    <div class="welcome">
+      <p class="welcome-text">
+        Welcome, click here
+        <span><i id="startGame" class="fas fa-play"></i></span> to start the
+        game
+      </p>
     </div>
 
-    <div class='background'>
-       <div id = "outsideBar"><div id="myBar">100</div></div> 
-        <canvas id="canvas" width="800" height="600"></canvas>
-        <img id='lama' src="assets/image/llama_walk.png" alt="lama">
-        <img id='chickenEat' src="assets/image/chicken_eat.png" alt="chickenEat">
-        <img id='sheep' src="assets/image/sheep_walk.png" alt="sheep">
-        <img id='pig' src="assets/image/pig_walk.png" alt="pig">
-        <img id='chicken' src="assets/image/chicken_walk.png" alt="chicken">
-        <img id='potion' src="assets/image/potion.png" alt="potion">
-        <img id='tillie' src="assets/image/princess.png" alt="tillie">
-        <img id='spider' src="assets/image/spider.png" alt="spider">
-        <img id='wall' src="assets/image/wall.png" alt="wall">
-        <img id='wood' src="assets/image/wood.png" alt="wood">
-        <img id='heart' src="assets/image/heart.png" alt="heart">
-        <img id='potion' src="assets/image/potion.png" alt="potion">
-    </div> 
-
-</body>
+    <div class="background">
+      <div id="outsideBar"><div id="myBar">100</div></div>
+      <canvas id="canvas" width="800" height="600"></canvas>
+      <img id="lama" src="assets/image/llama_walk.png" alt="lama" />
+      <img
+        id="chickenEat"
+        src="assets/image/chicken_eat.png"
+        alt="chickenEat"
+      />
+      <img id="sheep" src="assets/image/sheep_walk.png" alt="sheep" />
+      <img id="pig" src="assets/image/pig_walk.png" alt="pig" />
+      <img id="chicken" src="assets/image/chicken_walk.png" alt="chicken" />
+      <img id="potion" src="assets/image/potion.png" alt="potion" />
+      <img id="tillie" src="assets/image/princess.png" alt="tillie" />
+      <img id="spider" src="assets/image/spider.png" alt="spider" />
+      <img id="wall" src="assets/image/wall.png" alt="wall" />
+      <img id="wood" src="assets/image/wood.png" alt="wood" />
+      <img id="heart" src="assets/image/heart.png" alt="heart" />
+      <img id="potion" src="assets/image/potion.png" alt="potion" />
+    </div>
+  </body>
 </html>
