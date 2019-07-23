@@ -1,6 +1,6 @@
 ![Flare screenshot](assets/image/right.gif) Tillie-s-adventure![Flare screenshot](assets/image/left.gif)
 
-
+[Live Site](https://jieyinghuang.com/Tillie-s-adventure/)
 ## Background and Overview
 
 Tillie's Advendure is a adventure game with a background of a little girl - Tillie rescue her animal friends. 
